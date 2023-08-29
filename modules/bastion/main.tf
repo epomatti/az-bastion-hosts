@@ -3,13 +3,15 @@ resource "azurerm_public_ip" "main" {
   location            = var.location
   resource_group_name = var.group
   allocation_method   = "Static"
-  sku                 = var.sku
+  sku                 = "Standard"
 }
 
 resource "azurerm_bastion_host" "main" {
   name                = "bas-${var.sys}"
   location            = var.location
   resource_group_name = var.group
+
+  sku = var.sku
 
   ip_configuration {
     name                 = "configuration"
