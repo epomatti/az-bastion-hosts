@@ -8,7 +8,7 @@ resource "azurerm_virtual_network" "main" {
 
 ### Bastion Subnet ###
 resource "azurerm_network_security_group" "bastion" {
-  name                = "nsg-${var.sys}-bastion"
+  name                = "nsg-bastion"
   location            = var.location
   resource_group_name = var.group
 }
@@ -56,7 +56,7 @@ resource "azurerm_subnet_network_security_group_association" "bastion" {
 
 ### Linux Subnet ###
 resource "azurerm_network_security_group" "linux" {
-  name                = "nsg-${var.sys}-linux"
+  name                = "nsg-linux"
   location            = var.location
   resource_group_name = var.group
 }
@@ -104,7 +104,7 @@ resource "azurerm_subnet_network_security_group_association" "linux" {
 
 ### Windows Subnet ###
 resource "azurerm_network_security_group" "windows" {
-  name                = "nsg-${var.sys}-windows"
+  name                = "nsg-windows"
   location            = var.location
   resource_group_name = var.group
 }

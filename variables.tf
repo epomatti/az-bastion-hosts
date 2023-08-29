@@ -1,7 +1,7 @@
 ### Workload ###
 variable "sys" {
   type    = string
-  default = "pmttinfra"
+  default = "bastionhosts"
 }
 
 variable "location" {

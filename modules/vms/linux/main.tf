@@ -1,10 +1,10 @@
 resource "azurerm_network_interface" "main" {
-  name                = "nic-jumpbox-${var.sys}"
+  name                = "nic-linux"
   resource_group_name = var.group
   location            = var.location
 
   ip_configuration {
-    name                          = "jumpbox"
+    name                          = "linux"
     subnet_id                     = var.subnet
     private_ip_address_allocation = "Dynamic"
   }
@@ -15,7 +15,7 @@ resource "azurerm_network_interface" "main" {
 }
 
 resource "azurerm_linux_virtual_machine" "main" {
-  name                  = "vm-jumpbox-${var.sys}"
+  name                  = "vm-linux"
   resource_group_name   = var.group
   location              = var.location
   size                  = var.size
@@ -35,7 +35,7 @@ resource "azurerm_linux_virtual_machine" "main" {
   }
 
   os_disk {
-    name                 = "osdisk-linux-${var.sys}"
+    name                 = "osdisk-linux"
     caching              = "ReadOnly"
     storage_account_type = "Standard_LRS"
   }
