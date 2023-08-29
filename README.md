@@ -16,11 +16,9 @@ provision_linux_vm = true
 provision_win_vm   = true
 ```
 
-
+Create the resources:
 
 ```
 terraform init
 terraform apply -auto-approve
 ```
-
-
