@@ -1,12 +1,3 @@
-### Windows Jump Server ###
-
-resource "azurerm_public_ip" "windows" {
-  name                = "pip-windows-${var.sys}"
-  resource_group_name = var.group
-  location            = var.location
-  allocation_method   = "Static"
-}
-
 resource "azurerm_network_interface" "windows" {
   name                = "nic-windows-${var.sys}"
   resource_group_name = var.group
@@ -14,9 +5,8 @@ resource "azurerm_network_interface" "windows" {
 
   ip_configuration {
     name                          = "windows"
-    subnet_id                     = var.jumpbox_subnet
+    subnet_id                     = var.subnet
     private_ip_address_allocation = "Dynamic"
-    public_ip_address_id          = azurerm_public_ip.windows.id
   }
 
   lifecycle {
@@ -28,7 +18,7 @@ resource "azurerm_windows_virtual_machine" "windows" {
   name                  = "win-${var.sys}"
   resource_group_name   = var.group
   location              = var.location
-  size                  = var.jumpbox_size
+  size                  = var.size
   admin_username        = "bastionadmin"
   admin_password        = "P@ssw0rd.123"
   network_interface_ids = [azurerm_network_interface.windows.id]

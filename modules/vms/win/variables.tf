@@ -10,10 +10,10 @@ variable "group" {
   type = string
 }
 
-variable "jumpbox_subnet" {
+variable "subnet" {
   type = string
 }
 
-variable "jumpbox_size" {
+variable "size" {
   type = string
 }

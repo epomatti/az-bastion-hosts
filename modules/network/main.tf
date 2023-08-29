@@ -13,7 +13,7 @@ resource "azurerm_network_security_group" "bastion" {
   resource_group_name = var.group
 }
 
-resource "azurerm_network_security_rule" "inbound" {
+resource "azurerm_network_security_rule" "bastion_inbound" {
   name                        = "BastionInbound"
   priority                    = 100
   direction                   = "Inbound"
@@ -27,7 +27,7 @@ resource "azurerm_network_security_rule" "inbound" {
   network_security_group_name = azurerm_network_security_group.bastion.name
 }
 
-resource "azurerm_network_security_rule" "bastion" {
+resource "azurerm_network_security_rule" "bastion_outbound" {
   name                        = "BastionOutbound"
   priority                    = 100
   direction                   = "Outbound"
@@ -42,10 +42,10 @@ resource "azurerm_network_security_rule" "bastion" {
 }
 
 resource "azurerm_subnet" "bastion" {
-  name                 = "bastion-subnet"
+  name                 = "AzureBastionSubnet"
   resource_group_name  = var.group
   virtual_network_name = azurerm_virtual_network.main.name
-  address_prefixes     = ["10.0.10.0/24"]
+  address_prefixes     = ["10.0.10.0/26"]
 }
 
 
@@ -61,7 +61,7 @@ resource "azurerm_network_security_group" "linux" {
   resource_group_name = var.group
 }
 
-resource "azurerm_network_security_rule" "inbound" {
+resource "azurerm_network_security_rule" "linux_inbound" {
   name                        = "LinuxInbound"
   priority                    = 100
   direction                   = "Inbound"
@@ -75,7 +75,7 @@ resource "azurerm_network_security_rule" "inbound" {
   network_security_group_name = azurerm_network_security_group.linux.name
 }
 
-resource "azurerm_network_security_rule" "outbound" {
+resource "azurerm_network_security_rule" "linux_outbound" {
   name                        = "LinuxOutbound"
   priority                    = 100
   direction                   = "Outbound"
@@ -109,7 +109,7 @@ resource "azurerm_network_security_group" "windows" {
   resource_group_name = var.group
 }
 
-resource "azurerm_network_security_rule" "windows" {
+resource "azurerm_network_security_rule" "windows_inbound" {
   name                        = "WindowsInbound"
   priority                    = 100
   direction                   = "Inbound"
@@ -123,7 +123,7 @@ resource "azurerm_network_security_rule" "windows" {
   network_security_group_name = azurerm_network_security_group.windows.name
 }
 
-resource "azurerm_network_security_rule" "windows" {
+resource "azurerm_network_security_rule" "windows_outbound" {
   name                        = "WindowsOutbound"
   priority                    = 100
   direction                   = "Outbound"

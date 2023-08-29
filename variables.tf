@@ -9,6 +9,12 @@ variable "location" {
   default = "eastus"
 }
 
+### Bastion ###
+variable "bastion_sku" {
+  type    = string
+  default = "Basic"
+}
+
 ### Jumpbox ###
 variable "provision_linux_vm" {
   type    = bool

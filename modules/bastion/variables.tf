@@ -14,6 +14,6 @@ variable "subnet" {
   type = string
 }
 
-variable "size" {
+variable "sku" {
   type = string
 }
