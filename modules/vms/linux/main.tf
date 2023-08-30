@@ -23,6 +23,9 @@ resource "azurerm_linux_virtual_machine" "main" {
   admin_password        = "P@ssw0rd.123"
   network_interface_ids = [azurerm_network_interface.main.id]
 
+  # For testing purposes
+  disable_password_authentication = false
+
   custom_data = filebase64("${path.module}/cloud-init.sh")
 
   identity {
@@ -31,7 +34,7 @@ resource "azurerm_linux_virtual_machine" "main" {
 
   admin_ssh_key {
     username   = "bastionadmin"
-    public_key = file("~/.ssh/id_rsa.pub")
+    public_key = file("${path.module}/id_rsa.pub")
   }
 
   os_disk {
