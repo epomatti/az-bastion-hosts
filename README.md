@@ -28,3 +28,5 @@ Create the resources:
 terraform init
 terraform apply -auto-approve
 ```
+
+Connectivity will be available with SSH and RDP.
