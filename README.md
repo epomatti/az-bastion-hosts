@@ -2,6 +2,8 @@
 
 Bastion configuration with Windows and Linux VMs.
 
+<img src=".assets/bastion.png" width=700 />
+
 Create the `.auto.tfvars` file and set up your variables:
 
 ```terraform
