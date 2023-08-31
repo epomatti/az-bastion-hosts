@@ -41,6 +41,8 @@ bastion_sku = "Standard"
 
 ---
 
+### Clean-up
+
 Destroy the resources after using it:
 
 ```sh
