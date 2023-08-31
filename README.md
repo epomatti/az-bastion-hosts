@@ -2,7 +2,7 @@
 
 Bastion configuration with Windows and Linux VMs.
 
-<img src=".assets/bastion.png" width=750 />
+<img src=".assets/bastion.png" />
 
 Create the `.auto.tfvars` file and set up your variables:
 
