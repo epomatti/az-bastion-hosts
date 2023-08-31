@@ -1,6 +1,6 @@
 # Azure Bastion Hosts
 
-Bastion configuration with Windows and Linux VMs.
+Bastion configuration with Windows and Linux VMs. Adapted from the official [docs][1]:
 
 <img src=".assets/bastion.png" />
 
@@ -31,4 +31,21 @@ terraform init
 terraform apply -auto-approve
 ```
 
-Connectivity will be available with SSH and RDP.
+Connectivity will be available with SSH and RDP for the Linux and Windows machines respectively.
+
+To try out native SDK features, upgrade Bastion to the `Standard` SKU:
+
+```terraform
+bastion_sku = "Standard"
+```
+
+---
+
+Destroy the resources after using it:
+
+```sh
+terraform destroy -auto-approve
+```
+
+
+[1]: https://learn.microsoft.com/en-us/azure/bastion/bastion-overview
