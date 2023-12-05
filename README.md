@@ -25,6 +25,8 @@ terraform apply -auto-approve
 
 Connectivity will be available with SSH and RDP for the Linux and Windows machines respectively.
 
+> To confirm: Entra ID authentication is only supported by the Native Client
+
 To try out native SDK features, upgrade Bastion to the `Standard` SKU:
 
 ```terraform
