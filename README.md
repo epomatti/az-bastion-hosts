@@ -2,7 +2,7 @@
 
 Bastion configuration with Windows and Linux VMs. Adapted from the official [docs][1]:
 
-<img src=".assets/bastion.png" />
+<img src=".assets/azure-bastion.png" />
 
 Create the `.auto.tfvars` from the template and set the variables:
 
