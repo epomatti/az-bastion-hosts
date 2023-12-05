@@ -5,8 +5,7 @@ variable "sys" {
 }
 
 variable "location" {
-  type    = string
-  default = "eastus"
+  type = string
 }
 
 ### Bastion ###
@@ -27,11 +26,22 @@ variable "provision_win_vm" {
 }
 
 variable "jumpbox_size_linux" {
-  type    = string
-  default = "Standard_B1ls"
+  type = string
 }
 
 variable "jumpbox_size_win" {
-  type    = string
-  default = "Standard_B2s"
+  type = string
+}
+
+variable "entraid_tenant_domain" {
+  type = string
+}
+
+variable "vmadmin_user_name" {
+  type = string
+}
+
+variable "vmadmin_user_password" {
+  type      = string
+  sensitive = true
 }

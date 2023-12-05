@@ -1,15 +1,12 @@
 terraform {
   required_providers {
     azurerm = {
-      source = "hashicorp/azurerm"
+      source  = "hashicorp/azurerm"
+      version = "3.83.0"
     }
-  }
-}
-
-provider "azurerm" {
-  features {
-    resource_group {
-      prevent_deletion_if_contains_resources = false
+    azuread = {
+      source  = "hashicorp/azuread"
+      version = "2.46.0"
     }
   }
 }
@@ -53,4 +50,21 @@ module "vm_win" {
   group    = azurerm_resource_group.main.name
   size     = var.jumpbox_size_win
   subnet   = module.network.windows_subnet_id
+}
+
+module "entraid" {
+  source                = "./modules/entraid"
+  resource_group_id     = azurerm_resource_group.main.id
+  entraid_tenant_domain = var.entraid_tenant_domain
+  vmadmin_user_name     = var.vmadmin_user_name
+  vmadmin_user_password = var.vmadmin_user_password
+}
+
+module "keyvault" {
+  source                 = "./modules/keyvault"
+  sys                    = var.sys
+  location               = azurerm_resource_group.main.location
+  resource_group_name    = azurerm_resource_group.main.name
+  vmadmin_user_object_id = module.entraid.vmadmin_user_object_id
+  vmadmin_user_password  = var.vmadmin_user_password
 }
