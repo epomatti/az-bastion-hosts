@@ -27,7 +27,13 @@ resource "azurerm_role_assignment" "key_vault_administrator" {
 
 resource "azurerm_role_assignment" "key_vault_crypto_user" {
   scope                = azurerm_key_vault.default.id
-  role_definition_name = "Key Vault Crypto User"
+  role_definition_name = "Key Vault Secrets User"
+  principal_id         = var.vmadmin_user_object_id
+}
+
+resource "azurerm_role_assignment" "key_vault_reader" {
+  scope                = azurerm_key_vault.default.id
+  role_definition_name = "Key Vault Reader"
   principal_id         = var.vmadmin_user_object_id
 }
 

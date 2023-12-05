@@ -4,18 +4,10 @@ Bastion configuration with Windows and Linux VMs. Adapted from the official [doc
 
 <img src=".assets/bastion.png" />
 
-Create the `.auto.tfvars` file and set up your variables:
+Create the `.auto.tfvars` from the template and set the variables:
 
-```terraform
-# Location
-location = "eastus"
-
-# Bastion
-bastion_sku = "Basic"
-
-# VMs
-provision_linux_vm = true
-provision_win_vm   = true
+```sh
+cp config/template.tfvars .auto.tfvars
 ```
 
 Before applying, create a temporary key pair for SSH to the Linux machine:

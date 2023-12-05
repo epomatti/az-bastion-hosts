@@ -40,3 +40,11 @@ resource "azurerm_windows_virtual_machine" "windows" {
     version   = "latest"
   }
 }
+
+resource "azurerm_virtual_machine_extension" "AADLoginForWindows" {
+  name                 = "AADLoginForWindows"
+  virtual_machine_id   = azurerm_windows_virtual_machine.windows.id
+  publisher            = "Microsoft.Azure.ActiveDirectory"
+  type                 = "AADLoginForWindows"
+  type_handler_version = "2.1"
+}
