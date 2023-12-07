@@ -1,5 +1,5 @@
 # Location
-location = "brazilsouth"
+location = "eastus2"
 
 # Bastion
 bastion_sku = "Basic"

@@ -10,8 +10,7 @@ variable "location" {
 
 ### Bastion ###
 variable "bastion_sku" {
-  type    = string
-  default = "Basic"
+  type = string
 }
 
 ### Jumpbox ###
